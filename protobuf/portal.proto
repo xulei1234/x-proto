@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package protobuf;
+
+option go_package = ".";
+
+import "common.proto";
+
+service CruiserPortal {
+  // 查询 agent 节点列表
+  rpc Nodes (Empty) returns (stream NodeReply) {}
+  // 执行命令
+  rpc ExecCmd (CmdRequest) returns (Empty) {}
+  // 订阅agent上报的数据
+  rpc Subscribe (Empty) returns (stream Payload) {}
+  // 上传文件，暂存在channel节点上
+  rpc PutFile (stream FileShard) returns (Empty);
+  // channel上保存文件的md5值信息
+  rpc FileMd5 (Empty) returns (FileMd5Reply) {}
+  // 订阅 agent 节点变化
+  rpc WatchNodes (Empty) returns (stream NodeEventReply) {}
+}
+
+
+// 下发命令的请求体
+message CmdRequest {
+  uint64          id      = 1; // 命令唯一标识，后台生成
+  repeated string uuids   = 2; // 下发的agent uuid 列表
+  Command         cmd     = 3; // 命令内容
+}
+
+// 日志上报
+message LogReply {
+  uint64 id   = 1; // 任务唯一标识
+  string uuid = 2; // 日志 uuid 标识
+  sint32 pc   = 3; // 进度百分比 [0-100], 特殊 -100 表失败结束
+  Line   line = 4;
+}
+
+// 一般信息定义，由客户端根据类型自行解析消息体
+message MsgReply {
+  uint64 id    = 1; // 任务唯一标识
+  string mt    = 2; // 消息类型
+  string uuid  = 3; // 消息 uuid 标识
+  Status stat  = 4; // 状态，成功或者失败
+  Body  body  = 5; // 消息体, 状态为失败时则消息体无法被信任
+}
+
+// agent 节点信息
+message NodeReply {
+  string uuid     = 1;
+  string hostname = 2;
+  string ip       = 3;
+  int64  ts       = 4; // 最后上报时间
+}
+
+// 订阅的消息载荷
+message Payload {
+  uint64  id      = 1; // 任务唯一标识
+  string  uuid    = 2; // 消息 uuid 标识
+  int64   ts      = 3; // 请求时间戳
+  uint32  dt      = 4; // 数据类型
+  bytes   body    = 5; // 数据内容
+}
+
+// 文件分片上传, gRPC guarantees shard ordering
+message FileShard {
+  uint64 id      = 1; // 唯一标识
+  string fn      = 2; // filename
+  bytes  piece   = 3; // file content piece
+}
+
+// 文件md5值统计信息
+message FileMd5Reply {
+  map<string, string> md5s = 1; // 文件名->md5值
+}
+
+// agent 节点变化
+message NodeEventReply {
+  // update delete
+  string type = 1;
+  NodeReply node = 2;
+}
