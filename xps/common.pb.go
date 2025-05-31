@@ -314,7 +314,7 @@ var File_common_proto protoreflect.FileDescriptor
 
 const file_common_proto_rawDesc = "" +
 	"\n" +
-	"\fcommon.proto\x12\bprotobuf\"N\n" +
+	"\fcommon.proto\x12\x03xps\"N\n" +
 	"\x04Line\x12\x10\n" +
 	"\x03out\x18\x01 \x01(\tR\x03out\x12\x12\n" +
 	"\x04time\x18\x02 \x01(\x03R\x04time\x12\x10\n" +
@@ -350,11 +350,11 @@ func file_common_proto_rawDescGZIP() []byte {
 var file_common_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_common_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_common_proto_goTypes = []any{
-	(Status)(0),     // 0: protobuf.Status
-	(*Line)(nil),    // 1: protobuf.Line
-	(*Empty)(nil),   // 2: protobuf.Empty
-	(*Command)(nil), // 3: protobuf.Command
-	(*Body)(nil),    // 4: protobuf.Body
+	(Status)(0),     // 0: xps.Status
+	(*Line)(nil),    // 1: xps.Line
+	(*Empty)(nil),   // 2: xps.Empty
+	(*Command)(nil), // 3: xps.Command
+	(*Body)(nil),    // 4: xps.Body
 }
 var file_common_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type

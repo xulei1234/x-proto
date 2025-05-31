@@ -154,11 +154,11 @@ func (x *LogReply) GetLine() *Line {
 // 一般信息定义，由客户端根据类型自行解析消息体
 type MsgReply struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                          // 任务唯一标识
-	Mt            string                 `protobuf:"bytes,2,opt,name=mt,proto3" json:"mt,omitempty"`                           // 消息类型
-	Uuid          string                 `protobuf:"bytes,3,opt,name=uuid,proto3" json:"uuid,omitempty"`                       // 消息 uuid 标识
-	Stat          Status                 `protobuf:"varint,4,opt,name=stat,proto3,enum=protobuf.Status" json:"stat,omitempty"` // 状态，成功或者失败
-	Body          *Body                  `protobuf:"bytes,5,opt,name=body,proto3" json:"body,omitempty"`                       // 消息体, 状态为失败时则消息体无法被信任
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                     // 任务唯一标识
+	Mt            string                 `protobuf:"bytes,2,opt,name=mt,proto3" json:"mt,omitempty"`                      // 消息类型
+	Uuid          string                 `protobuf:"bytes,3,opt,name=uuid,proto3" json:"uuid,omitempty"`                  // 消息 uuid 标识
+	Stat          Status                 `protobuf:"varint,4,opt,name=stat,proto3,enum=xps.Status" json:"stat,omitempty"` // 状态，成功或者失败
+	Body          *Body                  `protobuf:"bytes,5,opt,name=body,proto3" json:"body,omitempty"`                  // 消息体, 状态为失败时则消息体无法被信任
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -538,23 +538,23 @@ var File_portal_proto protoreflect.FileDescriptor
 
 const file_portal_proto_rawDesc = "" +
 	"\n" +
-	"\fportal.proto\x12\bprotobuf\x1a\fcommon.proto\"W\n" +
+	"\fportal.proto\x12\x03xps\x1a\fcommon.proto\"R\n" +
 	"\n" +
 	"CmdRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x14\n" +
-	"\x05uuids\x18\x02 \x03(\tR\x05uuids\x12#\n" +
-	"\x03cmd\x18\x03 \x01(\v2\x11.protobuf.CommandR\x03cmd\"b\n" +
+	"\x05uuids\x18\x02 \x03(\tR\x05uuids\x12\x1e\n" +
+	"\x03cmd\x18\x03 \x01(\v2\f.xps.CommandR\x03cmd\"]\n" +
 	"\bLogReply\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n" +
 	"\x04uuid\x18\x02 \x01(\tR\x04uuid\x12\x0e\n" +
-	"\x02pc\x18\x03 \x01(\x11R\x02pc\x12\"\n" +
-	"\x04line\x18\x04 \x01(\v2\x0e.protobuf.LineR\x04line\"\x88\x01\n" +
+	"\x02pc\x18\x03 \x01(\x11R\x02pc\x12\x1d\n" +
+	"\x04line\x18\x04 \x01(\v2\t.xps.LineR\x04line\"~\n" +
 	"\bMsgReply\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x0e\n" +
 	"\x02mt\x18\x02 \x01(\tR\x02mt\x12\x12\n" +
-	"\x04uuid\x18\x03 \x01(\tR\x04uuid\x12$\n" +
-	"\x04stat\x18\x04 \x01(\x0e2\x10.protobuf.StatusR\x04stat\x12\"\n" +
-	"\x04body\x18\x05 \x01(\v2\x0e.protobuf.BodyR\x04body\"[\n" +
+	"\x04uuid\x18\x03 \x01(\tR\x04uuid\x12\x1f\n" +
+	"\x04stat\x18\x04 \x01(\x0e2\v.xps.StatusR\x04stat\x12\x1d\n" +
+	"\x04body\x18\x05 \x01(\v2\t.xps.BodyR\x04body\"[\n" +
 	"\tNodeReply\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12\x1a\n" +
 	"\bhostname\x18\x02 \x01(\tR\bhostname\x12\x0e\n" +
@@ -569,23 +569,29 @@ const file_portal_proto_rawDesc = "" +
 	"\tFileShard\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x0e\n" +
 	"\x02fn\x18\x02 \x01(\tR\x02fn\x12\x14\n" +
-	"\x05piece\x18\x03 \x01(\fR\x05piece\"}\n" +
-	"\fFileMd5Reply\x124\n" +
-	"\x04md5s\x18\x01 \x03(\v2 .protobuf.FileMd5Reply.Md5sEntryR\x04md5s\x1a7\n" +
+	"\x05piece\x18\x03 \x01(\fR\x05piece\"x\n" +
+	"\fFileMd5Reply\x12/\n" +
+	"\x04md5s\x18\x01 \x03(\v2\x1b.xps.FileMd5Reply.Md5sEntryR\x04md5s\x1a7\n" +
 	"\tMd5sEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"M\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"H\n" +
 	"\x0eNodeEventReply\x12\x12\n" +
-	"\x04type\x18\x01 \x01(\tR\x04type\x12'\n" +
-	"\x04node\x18\x02 \x01(\v2\x13.protobuf.NodeReplyR\x04node2\xd1\x02\n" +
-	"\rCruiserPortal\x121\n" +
-	"\x05Nodes\x12\x0f.protobuf.Empty\x1a\x13.protobuf.NodeReply\"\x000\x01\x122\n" +
-	"\aExecCmd\x12\x14.protobuf.CmdRequest\x1a\x0f.protobuf.Empty\"\x00\x123\n" +
-	"\tSubscribe\x12\x0f.protobuf.Empty\x1a\x11.protobuf.Payload\"\x000\x01\x121\n" +
-	"\aPutFile\x12\x13.protobuf.FileShard\x1a\x0f.protobuf.Empty(\x01\x124\n" +
-	"\aFileMd5\x12\x0f.protobuf.Empty\x1a\x16.protobuf.FileMd5Reply\"\x00\x12;\n" +
+	"\x04type\x18\x01 \x01(\tR\x04type\x12\"\n" +
+	"\x04node\x18\x02 \x01(\v2\x0e.xps.NodeReplyR\x04node2\x95\x02\n" +
+	"\rCruiserPortal\x12'\n" +
+	"\x05Nodes\x12\n" +
+	".xps.Empty\x1a\x0e.xps.NodeReply\"\x000\x01\x12(\n" +
+	"\aExecCmd\x12\x0f.xps.CmdRequest\x1a\n" +
+	".xps.Empty\"\x00\x12)\n" +
+	"\tSubscribe\x12\n" +
+	".xps.Empty\x1a\f.xps.Payload\"\x000\x01\x12'\n" +
+	"\aPutFile\x12\x0e.xps.FileShard\x1a\n" +
+	".xps.Empty(\x01\x12*\n" +
+	"\aFileMd5\x12\n" +
+	".xps.Empty\x1a\x11.xps.FileMd5Reply\"\x00\x121\n" +
 	"\n" +
-	"WatchNodes\x12\x0f.protobuf.Empty\x1a\x18.protobuf.NodeEventReply\"\x000\x01B\x03Z\x01.b\x06proto3"
+	"WatchNodes\x12\n" +
+	".xps.Empty\x1a\x13.xps.NodeEventReply\"\x000\x01B\x03Z\x01.b\x06proto3"
 
 var (
 	file_portal_proto_rawDescOnce sync.Once
@@ -601,40 +607,40 @@ func file_portal_proto_rawDescGZIP() []byte {
 
 var file_portal_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_portal_proto_goTypes = []any{
-	(*CmdRequest)(nil),     // 0: protobuf.CmdRequest
-	(*LogReply)(nil),       // 1: protobuf.LogReply
-	(*MsgReply)(nil),       // 2: protobuf.MsgReply
-	(*NodeReply)(nil),      // 3: protobuf.NodeReply
-	(*Payload)(nil),        // 4: protobuf.Payload
-	(*FileShard)(nil),      // 5: protobuf.FileShard
-	(*FileMd5Reply)(nil),   // 6: protobuf.FileMd5Reply
-	(*NodeEventReply)(nil), // 7: protobuf.NodeEventReply
-	nil,                    // 8: protobuf.FileMd5Reply.Md5sEntry
-	(*Command)(nil),        // 9: protobuf.Command
-	(*Line)(nil),           // 10: protobuf.Line
-	(Status)(0),            // 11: protobuf.Status
-	(*Body)(nil),           // 12: protobuf.Body
-	(*Empty)(nil),          // 13: protobuf.Empty
+	(*CmdRequest)(nil),     // 0: xps.CmdRequest
+	(*LogReply)(nil),       // 1: xps.LogReply
+	(*MsgReply)(nil),       // 2: xps.MsgReply
+	(*NodeReply)(nil),      // 3: xps.NodeReply
+	(*Payload)(nil),        // 4: xps.Payload
+	(*FileShard)(nil),      // 5: xps.FileShard
+	(*FileMd5Reply)(nil),   // 6: xps.FileMd5Reply
+	(*NodeEventReply)(nil), // 7: xps.NodeEventReply
+	nil,                    // 8: xps.FileMd5Reply.Md5sEntry
+	(*Command)(nil),        // 9: xps.Command
+	(*Line)(nil),           // 10: xps.Line
+	(Status)(0),            // 11: xps.Status
+	(*Body)(nil),           // 12: xps.Body
+	(*Empty)(nil),          // 13: xps.Empty
 }
 var file_portal_proto_depIdxs = []int32{
-	9,  // 0: protobuf.CmdRequest.cmd:type_name -> protobuf.Command
-	10, // 1: protobuf.LogReply.line:type_name -> protobuf.Line
-	11, // 2: protobuf.MsgReply.stat:type_name -> protobuf.Status
-	12, // 3: protobuf.MsgReply.body:type_name -> protobuf.Body
-	8,  // 4: protobuf.FileMd5Reply.md5s:type_name -> protobuf.FileMd5Reply.Md5sEntry
-	3,  // 5: protobuf.NodeEventReply.node:type_name -> protobuf.NodeReply
-	13, // 6: protobuf.CruiserPortal.Nodes:input_type -> protobuf.Empty
-	0,  // 7: protobuf.CruiserPortal.ExecCmd:input_type -> protobuf.CmdRequest
-	13, // 8: protobuf.CruiserPortal.Subscribe:input_type -> protobuf.Empty
-	5,  // 9: protobuf.CruiserPortal.PutFile:input_type -> protobuf.FileShard
-	13, // 10: protobuf.CruiserPortal.FileMd5:input_type -> protobuf.Empty
-	13, // 11: protobuf.CruiserPortal.WatchNodes:input_type -> protobuf.Empty
-	3,  // 12: protobuf.CruiserPortal.Nodes:output_type -> protobuf.NodeReply
-	13, // 13: protobuf.CruiserPortal.ExecCmd:output_type -> protobuf.Empty
-	4,  // 14: protobuf.CruiserPortal.Subscribe:output_type -> protobuf.Payload
-	13, // 15: protobuf.CruiserPortal.PutFile:output_type -> protobuf.Empty
-	6,  // 16: protobuf.CruiserPortal.FileMd5:output_type -> protobuf.FileMd5Reply
-	7,  // 17: protobuf.CruiserPortal.WatchNodes:output_type -> protobuf.NodeEventReply
+	9,  // 0: xps.CmdRequest.cmd:type_name -> xps.Command
+	10, // 1: xps.LogReply.line:type_name -> xps.Line
+	11, // 2: xps.MsgReply.stat:type_name -> xps.Status
+	12, // 3: xps.MsgReply.body:type_name -> xps.Body
+	8,  // 4: xps.FileMd5Reply.md5s:type_name -> xps.FileMd5Reply.Md5sEntry
+	3,  // 5: xps.NodeEventReply.node:type_name -> xps.NodeReply
+	13, // 6: xps.CruiserPortal.Nodes:input_type -> xps.Empty
+	0,  // 7: xps.CruiserPortal.ExecCmd:input_type -> xps.CmdRequest
+	13, // 8: xps.CruiserPortal.Subscribe:input_type -> xps.Empty
+	5,  // 9: xps.CruiserPortal.PutFile:input_type -> xps.FileShard
+	13, // 10: xps.CruiserPortal.FileMd5:input_type -> xps.Empty
+	13, // 11: xps.CruiserPortal.WatchNodes:input_type -> xps.Empty
+	3,  // 12: xps.CruiserPortal.Nodes:output_type -> xps.NodeReply
+	13, // 13: xps.CruiserPortal.ExecCmd:output_type -> xps.Empty
+	4,  // 14: xps.CruiserPortal.Subscribe:output_type -> xps.Payload
+	13, // 15: xps.CruiserPortal.PutFile:output_type -> xps.Empty
+	6,  // 16: xps.CruiserPortal.FileMd5:output_type -> xps.FileMd5Reply
+	7,  // 17: xps.CruiserPortal.WatchNodes:output_type -> xps.NodeEventReply
 	12, // [12:18] is the sub-list for method output_type
 	6,  // [6:12] is the sub-list for method input_type
 	6,  // [6:6] is the sub-list for extension type_name

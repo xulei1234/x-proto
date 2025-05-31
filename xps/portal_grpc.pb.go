@@ -19,12 +19,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CruiserPortal_Nodes_FullMethodName      = "/protobuf.CruiserPortal/Nodes"
-	CruiserPortal_ExecCmd_FullMethodName    = "/protobuf.CruiserPortal/ExecCmd"
-	CruiserPortal_Subscribe_FullMethodName  = "/protobuf.CruiserPortal/Subscribe"
-	CruiserPortal_PutFile_FullMethodName    = "/protobuf.CruiserPortal/PutFile"
-	CruiserPortal_FileMd5_FullMethodName    = "/protobuf.CruiserPortal/FileMd5"
-	CruiserPortal_WatchNodes_FullMethodName = "/protobuf.CruiserPortal/WatchNodes"
+	CruiserPortal_Nodes_FullMethodName      = "/xps.CruiserPortal/Nodes"
+	CruiserPortal_ExecCmd_FullMethodName    = "/xps.CruiserPortal/ExecCmd"
+	CruiserPortal_Subscribe_FullMethodName  = "/xps.CruiserPortal/Subscribe"
+	CruiserPortal_PutFile_FullMethodName    = "/xps.CruiserPortal/PutFile"
+	CruiserPortal_FileMd5_FullMethodName    = "/xps.CruiserPortal/FileMd5"
+	CruiserPortal_WatchNodes_FullMethodName = "/xps.CruiserPortal/WatchNodes"
 )
 
 // CruiserPortalClient is the client API for CruiserPortal service.
@@ -288,7 +288,7 @@ type CruiserPortal_WatchNodesServer = grpc.ServerStreamingServer[NodeEventReply]
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var CruiserPortal_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "protobuf.CruiserPortal",
+	ServiceName: "xps.CruiserPortal",
 	HandlerType: (*CruiserPortalServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

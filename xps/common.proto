@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 
-package protobuf;
+package xps;
 
 option go_package = ".";
 
