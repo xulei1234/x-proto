@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package xps;
 
-option go_package = ".";
+option go_package = "github.com/xulei1234/x-proto/xps;xps";
 
 import "common.proto";
 

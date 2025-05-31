@@ -4,7 +4,7 @@
 // 	protoc        v4.25.3
 // source: portal.proto
 
-package __
+package xps
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -591,7 +591,7 @@ const file_portal_proto_rawDesc = "" +
 	".xps.Empty\x1a\x11.xps.FileMd5Reply\"\x00\x121\n" +
 	"\n" +
 	"WatchNodes\x12\n" +
-	".xps.Empty\x1a\x13.xps.NodeEventReply\"\x000\x01B\x03Z\x01.b\x06proto3"
+	".xps.Empty\x1a\x13.xps.NodeEventReply\"\x000\x01B&Z$github.com/xulei1234/x-proto/xps;xpsb\x06proto3"
 
 var (
 	file_portal_proto_rawDescOnce sync.Once

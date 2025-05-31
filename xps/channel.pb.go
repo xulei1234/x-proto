@@ -6,7 +6,7 @@
 // 	protoc        v4.25.3
 // source: channel.proto
 
-package __
+package xps
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -473,7 +473,7 @@ const file_channel_proto_rawDesc = "" +
 	"\x03Log\x12\x0f.xps.LogRequest\x1a\n" +
 	".xps.Empty\"\x00\x12$\n" +
 	"\x03Msg\x12\x0f.xps.MsgRequest\x1a\n" +
-	".xps.Empty\"\x00B\x03Z\x01.b\x06proto3"
+	".xps.Empty\"\x00B&Z$github.com/xulei1234/x-proto/xps;xpsb\x06proto3"
 
 var (
 	file_channel_proto_rawDescOnce sync.Once

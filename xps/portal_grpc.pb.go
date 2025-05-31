@@ -4,7 +4,7 @@
 // - protoc             v4.25.3
 // source: portal.proto
 
-package __
+package xps
 
 import (
 	context "context"

@@ -6,7 +6,7 @@
 // - protoc             v4.25.3
 // source: channel.proto
 
-package __
+package xps
 
 import (
 	context "context"

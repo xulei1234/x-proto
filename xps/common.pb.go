@@ -4,7 +4,7 @@
 // 	protoc        v4.25.3
 // source: common.proto
 
-package __
+package xps
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -333,7 +333,7 @@ const file_common_proto_rawDesc = "" +
 	"\x06stderr\x18\x03 \x01(\fR\x06stderr*\x1c\n" +
 	"\x06Status\x12\b\n" +
 	"\x04SUCC\x10\x00\x12\b\n" +
-	"\x04FAIL\x10\x01B\x03Z\x01.b\x06proto3"
+	"\x04FAIL\x10\x01B&Z$github.com/xulei1234/x-proto/xps;xpsb\x06proto3"
 
 var (
 	file_common_proto_rawDescOnce sync.Once
