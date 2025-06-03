@@ -1,4 +1,4 @@
-package proto
+package x_proto
 
 import (
 	"encoding/json"
