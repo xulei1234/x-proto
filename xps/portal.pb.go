@@ -577,12 +577,17 @@ const file_xps_portal_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"H\n" +
 	"\x0eNodeEventReply\x12\x12\n" +
 	"\x04type\x18\x01 \x01(\tR\x04type\x12\"\n" +
-	"\x04node\x18\x02 \x01(\v2\x0e.xps.NodeReplyR\x04node2\x8f\x02\n" +
+	"\x04node\x18\x02 \x01(\v2\x0e.xps.NodeReplyR\x04node2\xe6\x02\n" +
 	"\aXPortal\x12'\n" +
 	"\x05Nodes\x12\n" +
 	".xps.Empty\x1a\x0e.xps.NodeReply\"\x000\x01\x12(\n" +
 	"\aExecCmd\x12\x0f.xps.CmdRequest\x1a\n" +
-	".xps.Empty\"\x00\x12)\n" +
+	".xps.Empty\"\x00\x12(\n" +
+	"\aRecvLog\x12\n" +
+	".xps.Empty\x1a\r.xps.LogReply\"\x000\x01\x12+\n" +
+	"\n" +
+	"CollectMsg\x12\n" +
+	".xps.Empty\x1a\r.xps.MsgReply\"\x000\x01\x12)\n" +
 	"\tSubscribe\x12\n" +
 	".xps.Empty\x1a\f.xps.Payload\"\x000\x01\x12'\n" +
 	"\aPutFile\x12\x0e.xps.FileShard\x1a\n" +
@@ -631,18 +636,22 @@ var file_xps_portal_proto_depIdxs = []int32{
 	3,  // 5: xps.NodeEventReply.node:type_name -> xps.NodeReply
 	13, // 6: xps.XPortal.Nodes:input_type -> xps.Empty
 	0,  // 7: xps.XPortal.ExecCmd:input_type -> xps.CmdRequest
-	13, // 8: xps.XPortal.Subscribe:input_type -> xps.Empty
-	5,  // 9: xps.XPortal.PutFile:input_type -> xps.FileShard
-	13, // 10: xps.XPortal.FileMd5:input_type -> xps.Empty
-	13, // 11: xps.XPortal.WatchNodes:input_type -> xps.Empty
-	3,  // 12: xps.XPortal.Nodes:output_type -> xps.NodeReply
-	13, // 13: xps.XPortal.ExecCmd:output_type -> xps.Empty
-	4,  // 14: xps.XPortal.Subscribe:output_type -> xps.Payload
-	13, // 15: xps.XPortal.PutFile:output_type -> xps.Empty
-	6,  // 16: xps.XPortal.FileMd5:output_type -> xps.FileMd5Reply
-	7,  // 17: xps.XPortal.WatchNodes:output_type -> xps.NodeEventReply
-	12, // [12:18] is the sub-list for method output_type
-	6,  // [6:12] is the sub-list for method input_type
+	13, // 8: xps.XPortal.RecvLog:input_type -> xps.Empty
+	13, // 9: xps.XPortal.CollectMsg:input_type -> xps.Empty
+	13, // 10: xps.XPortal.Subscribe:input_type -> xps.Empty
+	5,  // 11: xps.XPortal.PutFile:input_type -> xps.FileShard
+	13, // 12: xps.XPortal.FileMd5:input_type -> xps.Empty
+	13, // 13: xps.XPortal.WatchNodes:input_type -> xps.Empty
+	3,  // 14: xps.XPortal.Nodes:output_type -> xps.NodeReply
+	13, // 15: xps.XPortal.ExecCmd:output_type -> xps.Empty
+	1,  // 16: xps.XPortal.RecvLog:output_type -> xps.LogReply
+	2,  // 17: xps.XPortal.CollectMsg:output_type -> xps.MsgReply
+	4,  // 18: xps.XPortal.Subscribe:output_type -> xps.Payload
+	13, // 19: xps.XPortal.PutFile:output_type -> xps.Empty
+	6,  // 20: xps.XPortal.FileMd5:output_type -> xps.FileMd5Reply
+	7,  // 21: xps.XPortal.WatchNodes:output_type -> xps.NodeEventReply
+	14, // [14:22] is the sub-list for method output_type
+	6,  // [6:14] is the sub-list for method input_type
 	6,  // [6:6] is the sub-list for extension type_name
 	6,  // [6:6] is the sub-list for extension extendee
 	0,  // [0:6] is the sub-list for field type_name

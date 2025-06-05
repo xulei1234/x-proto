@@ -21,6 +21,8 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	XPortal_Nodes_FullMethodName      = "/xps.XPortal/Nodes"
 	XPortal_ExecCmd_FullMethodName    = "/xps.XPortal/ExecCmd"
+	XPortal_RecvLog_FullMethodName    = "/xps.XPortal/RecvLog"
+	XPortal_CollectMsg_FullMethodName = "/xps.XPortal/CollectMsg"
 	XPortal_Subscribe_FullMethodName  = "/xps.XPortal/Subscribe"
 	XPortal_PutFile_FullMethodName    = "/xps.XPortal/PutFile"
 	XPortal_FileMd5_FullMethodName    = "/xps.XPortal/FileMd5"
@@ -35,6 +37,10 @@ type XPortalClient interface {
 	Nodes(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[NodeReply], error)
 	// 执行命令
 	ExecCmd(ctx context.Context, in *CmdRequest, opts ...grpc.CallOption) (*Empty, error)
+	// 建立日志接收通道
+	RecvLog(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[LogReply], error)
+	// 获取一般信息，持续推送, 根据agent不同上报调用区分类型
+	CollectMsg(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[MsgReply], error)
 	// 订阅agent上报的数据
 	Subscribe(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[Payload], error)
 	// 上传文件，暂存在channel节点上
@@ -82,9 +88,47 @@ func (c *xPortalClient) ExecCmd(ctx context.Context, in *CmdRequest, opts ...grp
 	return out, nil
 }
 
+func (c *xPortalClient) RecvLog(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[LogReply], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &XPortal_ServiceDesc.Streams[1], XPortal_RecvLog_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[Empty, LogReply]{ClientStream: stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type XPortal_RecvLogClient = grpc.ServerStreamingClient[LogReply]
+
+func (c *xPortalClient) CollectMsg(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[MsgReply], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &XPortal_ServiceDesc.Streams[2], XPortal_CollectMsg_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[Empty, MsgReply]{ClientStream: stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type XPortal_CollectMsgClient = grpc.ServerStreamingClient[MsgReply]
+
 func (c *xPortalClient) Subscribe(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[Payload], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &XPortal_ServiceDesc.Streams[1], XPortal_Subscribe_FullMethodName, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &XPortal_ServiceDesc.Streams[3], XPortal_Subscribe_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -103,7 +147,7 @@ type XPortal_SubscribeClient = grpc.ServerStreamingClient[Payload]
 
 func (c *xPortalClient) PutFile(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[FileShard, Empty], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &XPortal_ServiceDesc.Streams[2], XPortal_PutFile_FullMethodName, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &XPortal_ServiceDesc.Streams[4], XPortal_PutFile_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -126,7 +170,7 @@ func (c *xPortalClient) FileMd5(ctx context.Context, in *Empty, opts ...grpc.Cal
 
 func (c *xPortalClient) WatchNodes(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[NodeEventReply], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &XPortal_ServiceDesc.Streams[3], XPortal_WatchNodes_FullMethodName, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &XPortal_ServiceDesc.Streams[5], XPortal_WatchNodes_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -151,6 +195,10 @@ type XPortalServer interface {
 	Nodes(*Empty, grpc.ServerStreamingServer[NodeReply]) error
 	// 执行命令
 	ExecCmd(context.Context, *CmdRequest) (*Empty, error)
+	// 建立日志接收通道
+	RecvLog(*Empty, grpc.ServerStreamingServer[LogReply]) error
+	// 获取一般信息，持续推送, 根据agent不同上报调用区分类型
+	CollectMsg(*Empty, grpc.ServerStreamingServer[MsgReply]) error
 	// 订阅agent上报的数据
 	Subscribe(*Empty, grpc.ServerStreamingServer[Payload]) error
 	// 上传文件，暂存在channel节点上
@@ -174,6 +222,12 @@ func (UnimplementedXPortalServer) Nodes(*Empty, grpc.ServerStreamingServer[NodeR
 }
 func (UnimplementedXPortalServer) ExecCmd(context.Context, *CmdRequest) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExecCmd not implemented")
+}
+func (UnimplementedXPortalServer) RecvLog(*Empty, grpc.ServerStreamingServer[LogReply]) error {
+	return status.Errorf(codes.Unimplemented, "method RecvLog not implemented")
+}
+func (UnimplementedXPortalServer) CollectMsg(*Empty, grpc.ServerStreamingServer[MsgReply]) error {
+	return status.Errorf(codes.Unimplemented, "method CollectMsg not implemented")
 }
 func (UnimplementedXPortalServer) Subscribe(*Empty, grpc.ServerStreamingServer[Payload]) error {
 	return status.Errorf(codes.Unimplemented, "method Subscribe not implemented")
@@ -236,6 +290,28 @@ func _XPortal_ExecCmd_Handler(srv interface{}, ctx context.Context, dec func(int
 	}
 	return interceptor(ctx, in, info, handler)
 }
+
+func _XPortal_RecvLog_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(Empty)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(XPortalServer).RecvLog(m, &grpc.GenericServerStream[Empty, LogReply]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type XPortal_RecvLogServer = grpc.ServerStreamingServer[LogReply]
+
+func _XPortal_CollectMsg_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(Empty)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(XPortalServer).CollectMsg(m, &grpc.GenericServerStream[Empty, MsgReply]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type XPortal_CollectMsgServer = grpc.ServerStreamingServer[MsgReply]
 
 func _XPortal_Subscribe_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(Empty)
@@ -304,6 +380,16 @@ var XPortal_ServiceDesc = grpc.ServiceDesc{
 		{
 			StreamName:    "Nodes",
 			Handler:       _XPortal_Nodes_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "RecvLog",
+			Handler:       _XPortal_RecvLog_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "CollectMsg",
+			Handler:       _XPortal_CollectMsg_Handler,
 			ServerStreams: true,
 		},
 		{

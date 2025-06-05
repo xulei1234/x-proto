@@ -11,6 +11,10 @@ service XPortal {
   rpc Nodes (Empty) returns (stream NodeReply) {}
   // 执行命令
   rpc ExecCmd (CmdRequest) returns (Empty) {}
+  // 建立日志接收通道
+  rpc RecvLog (Empty) returns (stream LogReply) {}
+  // 获取一般信息，持续推送, 根据agent不同上报调用区分类型
+  rpc CollectMsg (Empty) returns (stream MsgReply) {}
   // 订阅agent上报的数据
   rpc Subscribe (Empty) returns (stream Payload) {}
   // 上传文件，暂存在channel节点上
