@@ -4,9 +4,9 @@ package xps;
 
 option go_package = "github.com/xulei1234/x-proto/xps;xps";
 
-import "common.proto";
+import "xps/common.proto";
 
-service CruiserPortal {
+service XPortal {
   // 查询 agent 节点列表
   rpc Nodes (Empty) returns (stream NodeReply) {}
   // 执行命令

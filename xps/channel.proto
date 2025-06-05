@@ -1,13 +1,11 @@
-// protoc --go_out=. --go_opt=paths=source_relative \
-//       --go-grpc_out=. --go-grpc_opt=paths=source_relative \
-//       xps/*.proto
+// protoc -I . --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative xps/*.proto
 syntax = "proto3";
 
 package xps;
 
 option go_package = "github.com/xulei1234/x-proto/xps;xps";
 
-import "common.proto";
+import "xps/common.proto";
 
 service XService {
   // 注册agent节点

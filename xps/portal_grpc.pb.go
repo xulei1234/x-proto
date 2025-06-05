@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v4.25.3
-// source: portal.proto
+// source: xps/portal.proto
 
 package xps
 
@@ -19,18 +19,18 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CruiserPortal_Nodes_FullMethodName      = "/xps.CruiserPortal/Nodes"
-	CruiserPortal_ExecCmd_FullMethodName    = "/xps.CruiserPortal/ExecCmd"
-	CruiserPortal_Subscribe_FullMethodName  = "/xps.CruiserPortal/Subscribe"
-	CruiserPortal_PutFile_FullMethodName    = "/xps.CruiserPortal/PutFile"
-	CruiserPortal_FileMd5_FullMethodName    = "/xps.CruiserPortal/FileMd5"
-	CruiserPortal_WatchNodes_FullMethodName = "/xps.CruiserPortal/WatchNodes"
+	XPortal_Nodes_FullMethodName      = "/xps.XPortal/Nodes"
+	XPortal_ExecCmd_FullMethodName    = "/xps.XPortal/ExecCmd"
+	XPortal_Subscribe_FullMethodName  = "/xps.XPortal/Subscribe"
+	XPortal_PutFile_FullMethodName    = "/xps.XPortal/PutFile"
+	XPortal_FileMd5_FullMethodName    = "/xps.XPortal/FileMd5"
+	XPortal_WatchNodes_FullMethodName = "/xps.XPortal/WatchNodes"
 )
 
-// CruiserPortalClient is the client API for CruiserPortal service.
+// XPortalClient is the client API for XPortal service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type CruiserPortalClient interface {
+type XPortalClient interface {
 	// 查询 agent 节点列表
 	Nodes(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[NodeReply], error)
 	// 执行命令
@@ -45,17 +45,17 @@ type CruiserPortalClient interface {
 	WatchNodes(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[NodeEventReply], error)
 }
 
-type cruiserPortalClient struct {
+type xPortalClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewCruiserPortalClient(cc grpc.ClientConnInterface) CruiserPortalClient {
-	return &cruiserPortalClient{cc}
+func NewXPortalClient(cc grpc.ClientConnInterface) XPortalClient {
+	return &xPortalClient{cc}
 }
 
-func (c *cruiserPortalClient) Nodes(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[NodeReply], error) {
+func (c *xPortalClient) Nodes(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[NodeReply], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &CruiserPortal_ServiceDesc.Streams[0], CruiserPortal_Nodes_FullMethodName, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &XPortal_ServiceDesc.Streams[0], XPortal_Nodes_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -70,21 +70,21 @@ func (c *cruiserPortalClient) Nodes(ctx context.Context, in *Empty, opts ...grpc
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type CruiserPortal_NodesClient = grpc.ServerStreamingClient[NodeReply]
+type XPortal_NodesClient = grpc.ServerStreamingClient[NodeReply]
 
-func (c *cruiserPortalClient) ExecCmd(ctx context.Context, in *CmdRequest, opts ...grpc.CallOption) (*Empty, error) {
+func (c *xPortalClient) ExecCmd(ctx context.Context, in *CmdRequest, opts ...grpc.CallOption) (*Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, CruiserPortal_ExecCmd_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, XPortal_ExecCmd_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *cruiserPortalClient) Subscribe(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[Payload], error) {
+func (c *xPortalClient) Subscribe(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[Payload], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &CruiserPortal_ServiceDesc.Streams[1], CruiserPortal_Subscribe_FullMethodName, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &XPortal_ServiceDesc.Streams[1], XPortal_Subscribe_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -99,11 +99,11 @@ func (c *cruiserPortalClient) Subscribe(ctx context.Context, in *Empty, opts ...
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type CruiserPortal_SubscribeClient = grpc.ServerStreamingClient[Payload]
+type XPortal_SubscribeClient = grpc.ServerStreamingClient[Payload]
 
-func (c *cruiserPortalClient) PutFile(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[FileShard, Empty], error) {
+func (c *xPortalClient) PutFile(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[FileShard, Empty], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &CruiserPortal_ServiceDesc.Streams[2], CruiserPortal_PutFile_FullMethodName, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &XPortal_ServiceDesc.Streams[2], XPortal_PutFile_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -112,21 +112,21 @@ func (c *cruiserPortalClient) PutFile(ctx context.Context, opts ...grpc.CallOpti
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type CruiserPortal_PutFileClient = grpc.ClientStreamingClient[FileShard, Empty]
+type XPortal_PutFileClient = grpc.ClientStreamingClient[FileShard, Empty]
 
-func (c *cruiserPortalClient) FileMd5(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*FileMd5Reply, error) {
+func (c *xPortalClient) FileMd5(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*FileMd5Reply, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(FileMd5Reply)
-	err := c.cc.Invoke(ctx, CruiserPortal_FileMd5_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, XPortal_FileMd5_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *cruiserPortalClient) WatchNodes(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[NodeEventReply], error) {
+func (c *xPortalClient) WatchNodes(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[NodeEventReply], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &CruiserPortal_ServiceDesc.Streams[3], CruiserPortal_WatchNodes_FullMethodName, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &XPortal_ServiceDesc.Streams[3], XPortal_WatchNodes_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -141,12 +141,12 @@ func (c *cruiserPortalClient) WatchNodes(ctx context.Context, in *Empty, opts ..
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type CruiserPortal_WatchNodesClient = grpc.ServerStreamingClient[NodeEventReply]
+type XPortal_WatchNodesClient = grpc.ServerStreamingClient[NodeEventReply]
 
-// CruiserPortalServer is the server API for CruiserPortal service.
-// All implementations must embed UnimplementedCruiserPortalServer
+// XPortalServer is the server API for XPortal service.
+// All implementations must embed UnimplementedXPortalServer
 // for forward compatibility.
-type CruiserPortalServer interface {
+type XPortalServer interface {
 	// 查询 agent 节点列表
 	Nodes(*Empty, grpc.ServerStreamingServer[NodeReply]) error
 	// 执行命令
@@ -159,168 +159,168 @@ type CruiserPortalServer interface {
 	FileMd5(context.Context, *Empty) (*FileMd5Reply, error)
 	// 订阅 agent 节点变化
 	WatchNodes(*Empty, grpc.ServerStreamingServer[NodeEventReply]) error
-	mustEmbedUnimplementedCruiserPortalServer()
+	mustEmbedUnimplementedXPortalServer()
 }
 
-// UnimplementedCruiserPortalServer must be embedded to have
+// UnimplementedXPortalServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedCruiserPortalServer struct{}
+type UnimplementedXPortalServer struct{}
 
-func (UnimplementedCruiserPortalServer) Nodes(*Empty, grpc.ServerStreamingServer[NodeReply]) error {
+func (UnimplementedXPortalServer) Nodes(*Empty, grpc.ServerStreamingServer[NodeReply]) error {
 	return status.Errorf(codes.Unimplemented, "method Nodes not implemented")
 }
-func (UnimplementedCruiserPortalServer) ExecCmd(context.Context, *CmdRequest) (*Empty, error) {
+func (UnimplementedXPortalServer) ExecCmd(context.Context, *CmdRequest) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExecCmd not implemented")
 }
-func (UnimplementedCruiserPortalServer) Subscribe(*Empty, grpc.ServerStreamingServer[Payload]) error {
+func (UnimplementedXPortalServer) Subscribe(*Empty, grpc.ServerStreamingServer[Payload]) error {
 	return status.Errorf(codes.Unimplemented, "method Subscribe not implemented")
 }
-func (UnimplementedCruiserPortalServer) PutFile(grpc.ClientStreamingServer[FileShard, Empty]) error {
+func (UnimplementedXPortalServer) PutFile(grpc.ClientStreamingServer[FileShard, Empty]) error {
 	return status.Errorf(codes.Unimplemented, "method PutFile not implemented")
 }
-func (UnimplementedCruiserPortalServer) FileMd5(context.Context, *Empty) (*FileMd5Reply, error) {
+func (UnimplementedXPortalServer) FileMd5(context.Context, *Empty) (*FileMd5Reply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FileMd5 not implemented")
 }
-func (UnimplementedCruiserPortalServer) WatchNodes(*Empty, grpc.ServerStreamingServer[NodeEventReply]) error {
+func (UnimplementedXPortalServer) WatchNodes(*Empty, grpc.ServerStreamingServer[NodeEventReply]) error {
 	return status.Errorf(codes.Unimplemented, "method WatchNodes not implemented")
 }
-func (UnimplementedCruiserPortalServer) mustEmbedUnimplementedCruiserPortalServer() {}
-func (UnimplementedCruiserPortalServer) testEmbeddedByValue()                       {}
+func (UnimplementedXPortalServer) mustEmbedUnimplementedXPortalServer() {}
+func (UnimplementedXPortalServer) testEmbeddedByValue()                 {}
 
-// UnsafeCruiserPortalServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to CruiserPortalServer will
+// UnsafeXPortalServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to XPortalServer will
 // result in compilation errors.
-type UnsafeCruiserPortalServer interface {
-	mustEmbedUnimplementedCruiserPortalServer()
+type UnsafeXPortalServer interface {
+	mustEmbedUnimplementedXPortalServer()
 }
 
-func RegisterCruiserPortalServer(s grpc.ServiceRegistrar, srv CruiserPortalServer) {
-	// If the following call pancis, it indicates UnimplementedCruiserPortalServer was
+func RegisterXPortalServer(s grpc.ServiceRegistrar, srv XPortalServer) {
+	// If the following call pancis, it indicates UnimplementedXPortalServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&CruiserPortal_ServiceDesc, srv)
+	s.RegisterService(&XPortal_ServiceDesc, srv)
 }
 
-func _CruiserPortal_Nodes_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _XPortal_Nodes_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(Empty)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(CruiserPortalServer).Nodes(m, &grpc.GenericServerStream[Empty, NodeReply]{ServerStream: stream})
+	return srv.(XPortalServer).Nodes(m, &grpc.GenericServerStream[Empty, NodeReply]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type CruiserPortal_NodesServer = grpc.ServerStreamingServer[NodeReply]
+type XPortal_NodesServer = grpc.ServerStreamingServer[NodeReply]
 
-func _CruiserPortal_ExecCmd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _XPortal_ExecCmd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CmdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CruiserPortalServer).ExecCmd(ctx, in)
+		return srv.(XPortalServer).ExecCmd(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CruiserPortal_ExecCmd_FullMethodName,
+		FullMethod: XPortal_ExecCmd_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CruiserPortalServer).ExecCmd(ctx, req.(*CmdRequest))
+		return srv.(XPortalServer).ExecCmd(ctx, req.(*CmdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CruiserPortal_Subscribe_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _XPortal_Subscribe_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(Empty)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(CruiserPortalServer).Subscribe(m, &grpc.GenericServerStream[Empty, Payload]{ServerStream: stream})
+	return srv.(XPortalServer).Subscribe(m, &grpc.GenericServerStream[Empty, Payload]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type CruiserPortal_SubscribeServer = grpc.ServerStreamingServer[Payload]
+type XPortal_SubscribeServer = grpc.ServerStreamingServer[Payload]
 
-func _CruiserPortal_PutFile_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(CruiserPortalServer).PutFile(&grpc.GenericServerStream[FileShard, Empty]{ServerStream: stream})
+func _XPortal_PutFile_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(XPortalServer).PutFile(&grpc.GenericServerStream[FileShard, Empty]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type CruiserPortal_PutFileServer = grpc.ClientStreamingServer[FileShard, Empty]
+type XPortal_PutFileServer = grpc.ClientStreamingServer[FileShard, Empty]
 
-func _CruiserPortal_FileMd5_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _XPortal_FileMd5_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CruiserPortalServer).FileMd5(ctx, in)
+		return srv.(XPortalServer).FileMd5(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CruiserPortal_FileMd5_FullMethodName,
+		FullMethod: XPortal_FileMd5_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CruiserPortalServer).FileMd5(ctx, req.(*Empty))
+		return srv.(XPortalServer).FileMd5(ctx, req.(*Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CruiserPortal_WatchNodes_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _XPortal_WatchNodes_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(Empty)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(CruiserPortalServer).WatchNodes(m, &grpc.GenericServerStream[Empty, NodeEventReply]{ServerStream: stream})
+	return srv.(XPortalServer).WatchNodes(m, &grpc.GenericServerStream[Empty, NodeEventReply]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type CruiserPortal_WatchNodesServer = grpc.ServerStreamingServer[NodeEventReply]
+type XPortal_WatchNodesServer = grpc.ServerStreamingServer[NodeEventReply]
 
-// CruiserPortal_ServiceDesc is the grpc.ServiceDesc for CruiserPortal service.
+// XPortal_ServiceDesc is the grpc.ServiceDesc for XPortal service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var CruiserPortal_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "xps.CruiserPortal",
-	HandlerType: (*CruiserPortalServer)(nil),
+var XPortal_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "xps.XPortal",
+	HandlerType: (*XPortalServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "ExecCmd",
-			Handler:    _CruiserPortal_ExecCmd_Handler,
+			Handler:    _XPortal_ExecCmd_Handler,
 		},
 		{
 			MethodName: "FileMd5",
-			Handler:    _CruiserPortal_FileMd5_Handler,
+			Handler:    _XPortal_FileMd5_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "Nodes",
-			Handler:       _CruiserPortal_Nodes_Handler,
+			Handler:       _XPortal_Nodes_Handler,
 			ServerStreams: true,
 		},
 		{
 			StreamName:    "Subscribe",
-			Handler:       _CruiserPortal_Subscribe_Handler,
+			Handler:       _XPortal_Subscribe_Handler,
 			ServerStreams: true,
 		},
 		{
 			StreamName:    "PutFile",
-			Handler:       _CruiserPortal_PutFile_Handler,
+			Handler:       _XPortal_PutFile_Handler,
 			ClientStreams: true,
 		},
 		{
 			StreamName:    "WatchNodes",
-			Handler:       _CruiserPortal_WatchNodes_Handler,
+			Handler:       _XPortal_WatchNodes_Handler,
 			ServerStreams: true,
 		},
 	},
-	Metadata: "portal.proto",
+	Metadata: "xps/portal.proto",
 }

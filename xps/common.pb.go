@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v4.25.3
-// source: common.proto
+// source: xps/common.proto
 
 package xps
 
@@ -51,11 +51,11 @@ func (x Status) String() string {
 }
 
 func (Status) Descriptor() protoreflect.EnumDescriptor {
-	return file_common_proto_enumTypes[0].Descriptor()
+	return file_xps_common_proto_enumTypes[0].Descriptor()
 }
 
 func (Status) Type() protoreflect.EnumType {
-	return &file_common_proto_enumTypes[0]
+	return &file_xps_common_proto_enumTypes[0]
 }
 
 func (x Status) Number() protoreflect.EnumNumber {
@@ -64,7 +64,7 @@ func (x Status) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use Status.Descriptor instead.
 func (Status) EnumDescriptor() ([]byte, []int) {
-	return file_common_proto_rawDescGZIP(), []int{0}
+	return file_xps_common_proto_rawDescGZIP(), []int{0}
 }
 
 // Line 行日志
@@ -80,7 +80,7 @@ type Line struct {
 
 func (x *Line) Reset() {
 	*x = Line{}
-	mi := &file_common_proto_msgTypes[0]
+	mi := &file_xps_common_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -92,7 +92,7 @@ func (x *Line) String() string {
 func (*Line) ProtoMessage() {}
 
 func (x *Line) ProtoReflect() protoreflect.Message {
-	mi := &file_common_proto_msgTypes[0]
+	mi := &file_xps_common_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -105,7 +105,7 @@ func (x *Line) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Line.ProtoReflect.Descriptor instead.
 func (*Line) Descriptor() ([]byte, []int) {
-	return file_common_proto_rawDescGZIP(), []int{0}
+	return file_xps_common_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Line) GetOut() string {
@@ -145,7 +145,7 @@ type Empty struct {
 
 func (x *Empty) Reset() {
 	*x = Empty{}
-	mi := &file_common_proto_msgTypes[1]
+	mi := &file_xps_common_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -157,7 +157,7 @@ func (x *Empty) String() string {
 func (*Empty) ProtoMessage() {}
 
 func (x *Empty) ProtoReflect() protoreflect.Message {
-	mi := &file_common_proto_msgTypes[1]
+	mi := &file_xps_common_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -170,7 +170,7 @@ func (x *Empty) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Empty.ProtoReflect.Descriptor instead.
 func (*Empty) Descriptor() ([]byte, []int) {
-	return file_common_proto_rawDescGZIP(), []int{1}
+	return file_xps_common_proto_rawDescGZIP(), []int{1}
 }
 
 // Command define a cmd to exec
@@ -187,7 +187,7 @@ type Command struct {
 
 func (x *Command) Reset() {
 	*x = Command{}
-	mi := &file_common_proto_msgTypes[2]
+	mi := &file_xps_common_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -199,7 +199,7 @@ func (x *Command) String() string {
 func (*Command) ProtoMessage() {}
 
 func (x *Command) ProtoReflect() protoreflect.Message {
-	mi := &file_common_proto_msgTypes[2]
+	mi := &file_xps_common_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -212,7 +212,7 @@ func (x *Command) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Command.ProtoReflect.Descriptor instead.
 func (*Command) Descriptor() ([]byte, []int) {
-	return file_common_proto_rawDescGZIP(), []int{2}
+	return file_xps_common_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Command) GetName() string {
@@ -261,7 +261,7 @@ type Body struct {
 
 func (x *Body) Reset() {
 	*x = Body{}
-	mi := &file_common_proto_msgTypes[3]
+	mi := &file_xps_common_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -273,7 +273,7 @@ func (x *Body) String() string {
 func (*Body) ProtoMessage() {}
 
 func (x *Body) ProtoReflect() protoreflect.Message {
-	mi := &file_common_proto_msgTypes[3]
+	mi := &file_xps_common_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -286,7 +286,7 @@ func (x *Body) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Body.ProtoReflect.Descriptor instead.
 func (*Body) Descriptor() ([]byte, []int) {
-	return file_common_proto_rawDescGZIP(), []int{3}
+	return file_xps_common_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Body) GetCode() int32 {
@@ -310,11 +310,11 @@ func (x *Body) GetStderr() []byte {
 	return nil
 }
 
-var File_common_proto protoreflect.FileDescriptor
+var File_xps_common_proto protoreflect.FileDescriptor
 
-const file_common_proto_rawDesc = "" +
+const file_xps_common_proto_rawDesc = "" +
 	"\n" +
-	"\fcommon.proto\x12\x03xps\"N\n" +
+	"\x10xps/common.proto\x12\x03xps\"N\n" +
 	"\x04Line\x12\x10\n" +
 	"\x03out\x18\x01 \x01(\tR\x03out\x12\x12\n" +
 	"\x04time\x18\x02 \x01(\x03R\x04time\x12\x10\n" +
@@ -336,27 +336,27 @@ const file_common_proto_rawDesc = "" +
 	"\x04FAIL\x10\x01B&Z$github.com/xulei1234/x-proto/xps;xpsb\x06proto3"
 
 var (
-	file_common_proto_rawDescOnce sync.Once
-	file_common_proto_rawDescData []byte
+	file_xps_common_proto_rawDescOnce sync.Once
+	file_xps_common_proto_rawDescData []byte
 )
 
-func file_common_proto_rawDescGZIP() []byte {
-	file_common_proto_rawDescOnce.Do(func() {
-		file_common_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_common_proto_rawDesc), len(file_common_proto_rawDesc)))
+func file_xps_common_proto_rawDescGZIP() []byte {
+	file_xps_common_proto_rawDescOnce.Do(func() {
+		file_xps_common_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_xps_common_proto_rawDesc), len(file_xps_common_proto_rawDesc)))
 	})
-	return file_common_proto_rawDescData
+	return file_xps_common_proto_rawDescData
 }
 
-var file_common_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_common_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
-var file_common_proto_goTypes = []any{
+var file_xps_common_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_xps_common_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_xps_common_proto_goTypes = []any{
 	(Status)(0),     // 0: xps.Status
 	(*Line)(nil),    // 1: xps.Line
 	(*Empty)(nil),   // 2: xps.Empty
 	(*Command)(nil), // 3: xps.Command
 	(*Body)(nil),    // 4: xps.Body
 }
-var file_common_proto_depIdxs = []int32{
+var file_xps_common_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
 	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -364,27 +364,27 @@ var file_common_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_common_proto_init() }
-func file_common_proto_init() {
-	if File_common_proto != nil {
+func init() { file_xps_common_proto_init() }
+func file_xps_common_proto_init() {
+	if File_xps_common_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_common_proto_rawDesc), len(file_common_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_xps_common_proto_rawDesc), len(file_xps_common_proto_rawDesc)),
 			NumEnums:      1,
 			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_common_proto_goTypes,
-		DependencyIndexes: file_common_proto_depIdxs,
-		EnumInfos:         file_common_proto_enumTypes,
-		MessageInfos:      file_common_proto_msgTypes,
+		GoTypes:           file_xps_common_proto_goTypes,
+		DependencyIndexes: file_xps_common_proto_depIdxs,
+		EnumInfos:         file_xps_common_proto_enumTypes,
+		MessageInfos:      file_xps_common_proto_msgTypes,
 	}.Build()
-	File_common_proto = out.File
-	file_common_proto_goTypes = nil
-	file_common_proto_depIdxs = nil
+	File_xps_common_proto = out.File
+	file_xps_common_proto_goTypes = nil
+	file_xps_common_proto_depIdxs = nil
 }

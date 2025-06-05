@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v4.25.3
-// source: portal.proto
+// source: xps/portal.proto
 
 package xps
 
@@ -33,7 +33,7 @@ type CmdRequest struct {
 
 func (x *CmdRequest) Reset() {
 	*x = CmdRequest{}
-	mi := &file_portal_proto_msgTypes[0]
+	mi := &file_xps_portal_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -45,7 +45,7 @@ func (x *CmdRequest) String() string {
 func (*CmdRequest) ProtoMessage() {}
 
 func (x *CmdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_portal_proto_msgTypes[0]
+	mi := &file_xps_portal_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -58,7 +58,7 @@ func (x *CmdRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CmdRequest.ProtoReflect.Descriptor instead.
 func (*CmdRequest) Descriptor() ([]byte, []int) {
-	return file_portal_proto_rawDescGZIP(), []int{0}
+	return file_xps_portal_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CmdRequest) GetId() uint64 {
@@ -95,7 +95,7 @@ type LogReply struct {
 
 func (x *LogReply) Reset() {
 	*x = LogReply{}
-	mi := &file_portal_proto_msgTypes[1]
+	mi := &file_xps_portal_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -107,7 +107,7 @@ func (x *LogReply) String() string {
 func (*LogReply) ProtoMessage() {}
 
 func (x *LogReply) ProtoReflect() protoreflect.Message {
-	mi := &file_portal_proto_msgTypes[1]
+	mi := &file_xps_portal_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -120,7 +120,7 @@ func (x *LogReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogReply.ProtoReflect.Descriptor instead.
 func (*LogReply) Descriptor() ([]byte, []int) {
-	return file_portal_proto_rawDescGZIP(), []int{1}
+	return file_xps_portal_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *LogReply) GetId() uint64 {
@@ -165,7 +165,7 @@ type MsgReply struct {
 
 func (x *MsgReply) Reset() {
 	*x = MsgReply{}
-	mi := &file_portal_proto_msgTypes[2]
+	mi := &file_xps_portal_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -177,7 +177,7 @@ func (x *MsgReply) String() string {
 func (*MsgReply) ProtoMessage() {}
 
 func (x *MsgReply) ProtoReflect() protoreflect.Message {
-	mi := &file_portal_proto_msgTypes[2]
+	mi := &file_xps_portal_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -190,7 +190,7 @@ func (x *MsgReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MsgReply.ProtoReflect.Descriptor instead.
 func (*MsgReply) Descriptor() ([]byte, []int) {
-	return file_portal_proto_rawDescGZIP(), []int{2}
+	return file_xps_portal_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *MsgReply) GetId() uint64 {
@@ -241,7 +241,7 @@ type NodeReply struct {
 
 func (x *NodeReply) Reset() {
 	*x = NodeReply{}
-	mi := &file_portal_proto_msgTypes[3]
+	mi := &file_xps_portal_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -253,7 +253,7 @@ func (x *NodeReply) String() string {
 func (*NodeReply) ProtoMessage() {}
 
 func (x *NodeReply) ProtoReflect() protoreflect.Message {
-	mi := &file_portal_proto_msgTypes[3]
+	mi := &file_xps_portal_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -266,7 +266,7 @@ func (x *NodeReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NodeReply.ProtoReflect.Descriptor instead.
 func (*NodeReply) Descriptor() ([]byte, []int) {
-	return file_portal_proto_rawDescGZIP(), []int{3}
+	return file_xps_portal_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *NodeReply) GetUuid() string {
@@ -311,7 +311,7 @@ type Payload struct {
 
 func (x *Payload) Reset() {
 	*x = Payload{}
-	mi := &file_portal_proto_msgTypes[4]
+	mi := &file_xps_portal_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -323,7 +323,7 @@ func (x *Payload) String() string {
 func (*Payload) ProtoMessage() {}
 
 func (x *Payload) ProtoReflect() protoreflect.Message {
-	mi := &file_portal_proto_msgTypes[4]
+	mi := &file_xps_portal_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -336,7 +336,7 @@ func (x *Payload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Payload.ProtoReflect.Descriptor instead.
 func (*Payload) Descriptor() ([]byte, []int) {
-	return file_portal_proto_rawDescGZIP(), []int{4}
+	return file_xps_portal_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Payload) GetId() uint64 {
@@ -386,7 +386,7 @@ type FileShard struct {
 
 func (x *FileShard) Reset() {
 	*x = FileShard{}
-	mi := &file_portal_proto_msgTypes[5]
+	mi := &file_xps_portal_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -398,7 +398,7 @@ func (x *FileShard) String() string {
 func (*FileShard) ProtoMessage() {}
 
 func (x *FileShard) ProtoReflect() protoreflect.Message {
-	mi := &file_portal_proto_msgTypes[5]
+	mi := &file_xps_portal_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -411,7 +411,7 @@ func (x *FileShard) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FileShard.ProtoReflect.Descriptor instead.
 func (*FileShard) Descriptor() ([]byte, []int) {
-	return file_portal_proto_rawDescGZIP(), []int{5}
+	return file_xps_portal_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *FileShard) GetId() uint64 {
@@ -445,7 +445,7 @@ type FileMd5Reply struct {
 
 func (x *FileMd5Reply) Reset() {
 	*x = FileMd5Reply{}
-	mi := &file_portal_proto_msgTypes[6]
+	mi := &file_xps_portal_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -457,7 +457,7 @@ func (x *FileMd5Reply) String() string {
 func (*FileMd5Reply) ProtoMessage() {}
 
 func (x *FileMd5Reply) ProtoReflect() protoreflect.Message {
-	mi := &file_portal_proto_msgTypes[6]
+	mi := &file_xps_portal_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -470,7 +470,7 @@ func (x *FileMd5Reply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FileMd5Reply.ProtoReflect.Descriptor instead.
 func (*FileMd5Reply) Descriptor() ([]byte, []int) {
-	return file_portal_proto_rawDescGZIP(), []int{6}
+	return file_xps_portal_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *FileMd5Reply) GetMd5S() map[string]string {
@@ -492,7 +492,7 @@ type NodeEventReply struct {
 
 func (x *NodeEventReply) Reset() {
 	*x = NodeEventReply{}
-	mi := &file_portal_proto_msgTypes[7]
+	mi := &file_xps_portal_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -504,7 +504,7 @@ func (x *NodeEventReply) String() string {
 func (*NodeEventReply) ProtoMessage() {}
 
 func (x *NodeEventReply) ProtoReflect() protoreflect.Message {
-	mi := &file_portal_proto_msgTypes[7]
+	mi := &file_xps_portal_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -517,7 +517,7 @@ func (x *NodeEventReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NodeEventReply.ProtoReflect.Descriptor instead.
 func (*NodeEventReply) Descriptor() ([]byte, []int) {
-	return file_portal_proto_rawDescGZIP(), []int{7}
+	return file_xps_portal_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *NodeEventReply) GetType() string {
@@ -534,11 +534,11 @@ func (x *NodeEventReply) GetNode() *NodeReply {
 	return nil
 }
 
-var File_portal_proto protoreflect.FileDescriptor
+var File_xps_portal_proto protoreflect.FileDescriptor
 
-const file_portal_proto_rawDesc = "" +
+const file_xps_portal_proto_rawDesc = "" +
 	"\n" +
-	"\fportal.proto\x12\x03xps\x1a\fcommon.proto\"R\n" +
+	"\x10xps/portal.proto\x12\x03xps\x1a\x10xps/common.proto\"R\n" +
 	"\n" +
 	"CmdRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x14\n" +
@@ -577,8 +577,8 @@ const file_portal_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"H\n" +
 	"\x0eNodeEventReply\x12\x12\n" +
 	"\x04type\x18\x01 \x01(\tR\x04type\x12\"\n" +
-	"\x04node\x18\x02 \x01(\v2\x0e.xps.NodeReplyR\x04node2\x95\x02\n" +
-	"\rCruiserPortal\x12'\n" +
+	"\x04node\x18\x02 \x01(\v2\x0e.xps.NodeReplyR\x04node2\x8f\x02\n" +
+	"\aXPortal\x12'\n" +
 	"\x05Nodes\x12\n" +
 	".xps.Empty\x1a\x0e.xps.NodeReply\"\x000\x01\x12(\n" +
 	"\aExecCmd\x12\x0f.xps.CmdRequest\x1a\n" +
@@ -594,19 +594,19 @@ const file_portal_proto_rawDesc = "" +
 	".xps.Empty\x1a\x13.xps.NodeEventReply\"\x000\x01B&Z$github.com/xulei1234/x-proto/xps;xpsb\x06proto3"
 
 var (
-	file_portal_proto_rawDescOnce sync.Once
-	file_portal_proto_rawDescData []byte
+	file_xps_portal_proto_rawDescOnce sync.Once
+	file_xps_portal_proto_rawDescData []byte
 )
 
-func file_portal_proto_rawDescGZIP() []byte {
-	file_portal_proto_rawDescOnce.Do(func() {
-		file_portal_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_portal_proto_rawDesc), len(file_portal_proto_rawDesc)))
+func file_xps_portal_proto_rawDescGZIP() []byte {
+	file_xps_portal_proto_rawDescOnce.Do(func() {
+		file_xps_portal_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_xps_portal_proto_rawDesc), len(file_xps_portal_proto_rawDesc)))
 	})
-	return file_portal_proto_rawDescData
+	return file_xps_portal_proto_rawDescData
 }
 
-var file_portal_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
-var file_portal_proto_goTypes = []any{
+var file_xps_portal_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_xps_portal_proto_goTypes = []any{
 	(*CmdRequest)(nil),     // 0: xps.CmdRequest
 	(*LogReply)(nil),       // 1: xps.LogReply
 	(*MsgReply)(nil),       // 2: xps.MsgReply
@@ -622,25 +622,25 @@ var file_portal_proto_goTypes = []any{
 	(*Body)(nil),           // 12: xps.Body
 	(*Empty)(nil),          // 13: xps.Empty
 }
-var file_portal_proto_depIdxs = []int32{
+var file_xps_portal_proto_depIdxs = []int32{
 	9,  // 0: xps.CmdRequest.cmd:type_name -> xps.Command
 	10, // 1: xps.LogReply.line:type_name -> xps.Line
 	11, // 2: xps.MsgReply.stat:type_name -> xps.Status
 	12, // 3: xps.MsgReply.body:type_name -> xps.Body
 	8,  // 4: xps.FileMd5Reply.md5s:type_name -> xps.FileMd5Reply.Md5sEntry
 	3,  // 5: xps.NodeEventReply.node:type_name -> xps.NodeReply
-	13, // 6: xps.CruiserPortal.Nodes:input_type -> xps.Empty
-	0,  // 7: xps.CruiserPortal.ExecCmd:input_type -> xps.CmdRequest
-	13, // 8: xps.CruiserPortal.Subscribe:input_type -> xps.Empty
-	5,  // 9: xps.CruiserPortal.PutFile:input_type -> xps.FileShard
-	13, // 10: xps.CruiserPortal.FileMd5:input_type -> xps.Empty
-	13, // 11: xps.CruiserPortal.WatchNodes:input_type -> xps.Empty
-	3,  // 12: xps.CruiserPortal.Nodes:output_type -> xps.NodeReply
-	13, // 13: xps.CruiserPortal.ExecCmd:output_type -> xps.Empty
-	4,  // 14: xps.CruiserPortal.Subscribe:output_type -> xps.Payload
-	13, // 15: xps.CruiserPortal.PutFile:output_type -> xps.Empty
-	6,  // 16: xps.CruiserPortal.FileMd5:output_type -> xps.FileMd5Reply
-	7,  // 17: xps.CruiserPortal.WatchNodes:output_type -> xps.NodeEventReply
+	13, // 6: xps.XPortal.Nodes:input_type -> xps.Empty
+	0,  // 7: xps.XPortal.ExecCmd:input_type -> xps.CmdRequest
+	13, // 8: xps.XPortal.Subscribe:input_type -> xps.Empty
+	5,  // 9: xps.XPortal.PutFile:input_type -> xps.FileShard
+	13, // 10: xps.XPortal.FileMd5:input_type -> xps.Empty
+	13, // 11: xps.XPortal.WatchNodes:input_type -> xps.Empty
+	3,  // 12: xps.XPortal.Nodes:output_type -> xps.NodeReply
+	13, // 13: xps.XPortal.ExecCmd:output_type -> xps.Empty
+	4,  // 14: xps.XPortal.Subscribe:output_type -> xps.Payload
+	13, // 15: xps.XPortal.PutFile:output_type -> xps.Empty
+	6,  // 16: xps.XPortal.FileMd5:output_type -> xps.FileMd5Reply
+	7,  // 17: xps.XPortal.WatchNodes:output_type -> xps.NodeEventReply
 	12, // [12:18] is the sub-list for method output_type
 	6,  // [6:12] is the sub-list for method input_type
 	6,  // [6:6] is the sub-list for extension type_name
@@ -648,27 +648,27 @@ var file_portal_proto_depIdxs = []int32{
 	0,  // [0:6] is the sub-list for field type_name
 }
 
-func init() { file_portal_proto_init() }
-func file_portal_proto_init() {
-	if File_portal_proto != nil {
+func init() { file_xps_portal_proto_init() }
+func file_xps_portal_proto_init() {
+	if File_xps_portal_proto != nil {
 		return
 	}
-	file_common_proto_init()
+	file_xps_common_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_portal_proto_rawDesc), len(file_portal_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_xps_portal_proto_rawDesc), len(file_xps_portal_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_portal_proto_goTypes,
-		DependencyIndexes: file_portal_proto_depIdxs,
-		MessageInfos:      file_portal_proto_msgTypes,
+		GoTypes:           file_xps_portal_proto_goTypes,
+		DependencyIndexes: file_xps_portal_proto_depIdxs,
+		MessageInfos:      file_xps_portal_proto_msgTypes,
 	}.Build()
-	File_portal_proto = out.File
-	file_portal_proto_goTypes = nil
-	file_portal_proto_depIdxs = nil
+	File_xps_portal_proto = out.File
+	file_xps_portal_proto_goTypes = nil
+	file_xps_portal_proto_depIdxs = nil
 }
